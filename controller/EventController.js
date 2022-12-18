@@ -30,6 +30,7 @@ export const createEvent = async (req, res) => {
 }
 
 export const getEventQuery = async (req, res) => {
+    console.log(req.query);
     cleanQuery(req.query);
     try {
         const events = await prisma.event.findMany({
@@ -100,41 +101,47 @@ export const getDetailEvent = async (req, res) => {
 // }
 
 export const delEvent = async (req, res) => {
-    const {id : userId, eventId} = req.body;
+    const eventId = parseInt(req.params.id)
+    const {id} = req.body;
     try {
+        const {userId} = await prisma.event.findUniqueOrThrow({
+            where : {
+                id : eventId
+            }
+        });
 
-        const {userId : eventUserId} = await prisma.event.findFirst({
+        if(!(id == userId)) throw new Error("Anda tidak memiliki akses untuk melakukan aksi")
+        await prisma.event.update({
+            where : {
+                id : parseInt(eventId),
+            },
+            data : {
+                formRegister : {
+                    update : {
+                        questionRegister : {
+                            deleteMany : {}
+                        },
+                    }
+                }
+            }
+        })
+
+        await prisma.event.update({
+            where  : {
+                id : eventId
+            },
+            data : {
+                formRegister : {
+                    delete : true
+                }
+            }
+        })
+
+        await prisma.event.delete({
             where : {
                 id : eventId
             }
         })
-
-        if(!(userId == eventUserId)) throw new Error("Tidak Memiliki Akses Untuk Melakukan Aksi")
-
-        const {id : formRegisterId} = await prisma.formRegister.findFirst({
-            where : {
-                eventId
-            }
-        })
-
-        if(formRegisterId){
-            await prisma.questionRegister.deleteMany({
-                where : {
-                    formRegisterId
-                }
-            })
-
-            await prisma.formRegister.deleteMany({
-                where : {
-                    eventId
-                }
-            })
-        }
-
-        await prisma.event.delete({
-            where : {id : eventId}
-        })
-
         res.status(200).json({message : "Delete Success"})
     } catch (error) {
         res.status(500).json({message : error.message})
@@ -156,7 +163,6 @@ export const updateEvent = async (req, res) => {
         if(!formRegister) res.status(200).json({message : "Berhasil Update"}).end();
 
         const {id : formRegisterId, title, description : formRegisterDesc} = formRegister;
-        console.log(title);
 
         if(formRegisterId){
             await prisma.event.update({

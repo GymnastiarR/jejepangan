@@ -5,7 +5,7 @@ import { validation } from "../middleware/Validation.js";
 const eventRouter = express.Router();
 
 eventRouter.post('/event',validation, createEvent);
-eventRouter.delete('/event', validation, delEvent);
+eventRouter.delete('/event/:id', validation, delEvent);
 eventRouter.patch('/event', validation, updateEvent);
 
 eventRouter.get('/event/detail', getDetailEvent);

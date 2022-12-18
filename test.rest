@@ -9,8 +9,8 @@ POST http://localhost:5000/login/
 Content-Type: application/json
 
 {
-    "username" : "Khalimahh",
-    "password" : "Gymnas.2911"
+    "username" : "TestMisalnya2",
+    "password" : "Ramadhan.2911"
 }
 
 ###
@@ -26,8 +26,8 @@ Content-Type: application/json
 
 {
     "name" : "Gymnastiar",
-    "username" : "TestMisalnya",
-    "email" : "TestEmail@gmail.com",
+    "username" : "TestMisalnya2",
+    "email" : "TestEmai2l@gmail.com",
     "password" : "Ramadhan.2911",
     "passwordConfirmation" : "Ramadhan.2911"
 }
@@ -64,42 +64,38 @@ Content-Type: application/json
 }
 
 ###
-DELETE http://localhost:5000/event/
+DELETE http://localhost:5000/event/6
 Content-Type: application/json
-
-{
-    "eventId" : 1
-}
 
 ###
 PATCH http://localhost:5000/event/
 Content-Type: application/json
 
 {
-    "eventId" : 1,
+    "eventId" : 7,
     "name" : "Summertime",
     "description" : "Ini adalah event bla bla bla bla update",
     "heldOn" : "2020-11-29",
     "formRegister" : {
-        "id" : 1,
+        "id" : 7,
         "title" : "Pendaftaran Lomba Cosplay update",
         "description" : "Lomba cosplat bla bla bla yang diadakan oleh bla bla bla lorem Ipsum update"
     },
     "questions" : [
         {
-            "id" : 1,
+            "id" : 25,
             "content" : "Pertanyaan satu Update"
         },
         {
-            "id" : 2,
+            "id" : 26,
             "content" : "Pertanyaan dua Update"
         },
         {
-            "id" : 3,
+            "id" : 27,
             "content" : "Pertanyaan tiga Update"
         },
         {
-            "id" : 4,
+            "id" : 28,
             "content" : "Pertanyaan empat"
         }
     ]
@@ -109,7 +105,7 @@ Content-Type: application/json
 GET http://localhost:5000/event
 
 ###
-GET http://localhost:5000/event/detail
+GET http://localhost:5000/event/detail?id=7
 
 ###
 GET http://localhost:5000/event?name=summertime

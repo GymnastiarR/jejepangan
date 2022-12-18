@@ -3,9 +3,15 @@ import jwt from "jsonwebtoken";
 const tokenValidate = (req) => {
     const token = req.signedCookies['Auth-Token']
     if(!token) return false;
-
-    const isValid = jwt.verify(token, process.env.PRIVATE_KEY);
-    if(!isValid) return false;
+    
+    // console.log("here");
+    jwt.verify(token, process.env.PRIVATE_KEY, function(err, decoded) {
+        if(err) {
+            let expiredAt = new Date(err.expiredAt)
+            if(expiredAt.getTime() < Date.now()) return false;
+            throw err
+        }
+    });      
 
     return true
 }
@@ -22,7 +28,6 @@ export const isUserLogin = (req, res, next) => {
 export const isUserNotLogin = (req, res, next) => {
     try {       
         if(tokenValidate(req)) throw new Error("User sudah login");
-
         next()
     }catch (error) {
         res.status(400).json({message : error.message});
