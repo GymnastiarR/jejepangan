@@ -4,7 +4,7 @@ Project ini dibuat sebagai backend untuk apliksi jejepangan.
 
 Cara setup project
 
-1. jalankan perintah npm install untuk melakukan installasi depedencies di package.json
+1. jalankan perintah npm install untuk melakukan installasi dependencies di package.json
 2. aktifkan web server seperti apache dan DBMS seperti mysql
 3. buat file .env atau gunakan .example.env untuk melakukan setting variable
 4. sesuaikan database url yang ada pada .env
