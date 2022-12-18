@@ -2,7 +2,7 @@
 
 Project ini dibuat sebagai backend untuk apliksi jejepangan.
 
-Cara setup project
+## Cara setup project
 
 1. jalankan perintah berikut untuk melakukan installasi dependencies di package.json
 
@@ -37,7 +37,7 @@ $ npx prisma migrate dev
 9. gunakan test.rest untuk mencoba mengakses end point. Bisa juga menggunakan postman dan yang lainnya
 10. masukkan semua file unit test ke dalam folder test
 
-NOTE
+## NOTE
 1. command lainnya tentang prisma dapat dilihat di : 
 2. method lainnya yang ada pada validator dapat dilihat di : 
 3. methid lainnya yang ada pada jwt dapat dilihat di : 
