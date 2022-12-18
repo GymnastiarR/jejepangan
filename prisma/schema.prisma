@@ -1,0 +1,61 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model User{
+  id Int @id @default(autoincrement())
+  name String
+  email String @unique
+  username String
+  password String
+  verified Boolean @default(false)
+  events Event[]
+  answer Answer[]
+  createdAt DateTime @default(now())
+}
+
+model Event{
+  id Int @id @default(autoincrement())
+  user User @relation(fields: [userId], references: [id])
+  userId Int
+  name String
+  description String @db.Text
+  heldOn DateTime @db.Date 
+  createdAt DateTime @default(now())
+  updateAt DateTime @default(now())
+  formRegister FormRegister?
+}
+
+model FormRegister{
+  id Int @id @default(autoincrement())
+  title String
+  description String @db.Text
+  event Event @relation(fields: [eventId], references: [id])
+  eventId Int @unique
+  questionRegister QuestionRegister[]
+}
+
+model QuestionRegister{
+  id Int @id @default(autoincrement())
+  question String
+  formRegsiter FormRegister @relation(fields: [formRegisterId], references: [id])
+  answer Answer[]
+  formRegisterId Int 
+}
+
+model Answer{
+  id Int @id @default(autoincrement())
+  content String
+  questionRegister QuestionRegister @relation(fields: [questionRegisterId], references: [id])
+  user User @relation(fields: [userId], references: [id])
+  userId Int
+  questionRegisterId Int
+}

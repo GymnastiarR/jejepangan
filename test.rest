@@ -1,0 +1,143 @@
+###
+GET http://localhost:5000/
+
+###
+GET http://localhost:5000/login/
+
+###
+POST http://localhost:5000/login/
+Content-Type: application/json
+
+{
+    "username" : "Khalimahh",
+    "password" : "Gymnas.2911"
+}
+
+###
+GET http://localhost:5000/logout/
+
+
+###
+GET http://localhost:5000/register/
+
+###
+POST  http://localhost:5000/register/
+Content-Type: application/json
+
+{
+    "name" : "Gymnastiar",
+    "username" : "TestMisalnya",
+    "email" : "TestEmail@gmail.com",
+    "password" : "Ramadhan.2911",
+    "passwordConfirmation" : "Ramadhan.2911"
+}
+
+###
+POST http://localhost:5000/resend/
+Content-Type: application/json
+
+{
+    "email" : "khaliku@gmail.com"
+}
+
+###Verifikasi Email
+GET http://localhost:5000/verify?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiR3ltbmFzdGlhciIsImVtYWlsIjoia2hhbGlrdUBnbWFpbC5jb20iLCJpYXQiOjE2NzExOTEyMjgsImV4cCI6MTY3MTE5NDgyOH0.pYu3ShTXfhOcJbTpF2lvwWm_GS51N2JBtLKJyr7VwsM
+
+###
+POST http://localhost:5000/event/
+Content-Type: application/json
+
+{
+    "name" : "Summertime",
+    "description" : "Ini adalah event bla bla bla bla",
+    "heldOn" : "2020-11-29",
+    "formRegister" : {
+        "title" : "Pendaftaran Lomba Cosplay",
+        "description" : "Lomba cosplat bla bla bla yang diadakan oleh bla bla bla lorem Ipsum"
+    },
+    "questions" : [
+        {"content" : "Pertanyaan satu"},
+        {"content" : "Pertanyaan dua"},
+        {"content" : "Pertanyaan tiga"},
+        {"content" : "Pertanyaan empat"}
+    ]
+}
+
+###
+DELETE http://localhost:5000/event/
+Content-Type: application/json
+
+{
+    "eventId" : 1
+}
+
+###
+PATCH http://localhost:5000/event/
+Content-Type: application/json
+
+{
+    "eventId" : 1,
+    "name" : "Summertime",
+    "description" : "Ini adalah event bla bla bla bla update",
+    "heldOn" : "2020-11-29",
+    "formRegister" : {
+        "id" : 1,
+        "title" : "Pendaftaran Lomba Cosplay update",
+        "description" : "Lomba cosplat bla bla bla yang diadakan oleh bla bla bla lorem Ipsum update"
+    },
+    "questions" : [
+        {
+            "id" : 1,
+            "content" : "Pertanyaan satu Update"
+        },
+        {
+            "id" : 2,
+            "content" : "Pertanyaan dua Update"
+        },
+        {
+            "id" : 3,
+            "content" : "Pertanyaan tiga Update"
+        },
+        {
+            "id" : 4,
+            "content" : "Pertanyaan empat"
+        }
+    ]
+}
+
+###
+GET http://localhost:5000/event
+
+###
+GET http://localhost:5000/event/detail
+
+###
+GET http://localhost:5000/event?name=summertime
+
+###
+POST http://localhost:5000/event/detail
+
+
+{
+    "data" :[
+        {
+            "id" : 10,
+            "content" : "lorem ipsum dolor"
+        }
+        {
+            "id" : 11,
+            "content" : "lorem ipsum dolor"
+        }
+        {
+            "id" : 12,
+            "content" : "lorem ipsum dolor"
+        }
+        {
+            "id" : 13,
+            "content" : "lorem ipsum dolor"
+        }
+    ]
+}
+
+###
+GET http://localhost:5000/test
