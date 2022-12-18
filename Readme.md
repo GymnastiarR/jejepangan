@@ -29,18 +29,21 @@ PASS_EMAIL=345f99a1a5a9ae
 ```
 
 7. sesuaikan juga dbms yang digunakan pada file schema.prisma
-
-8. jalankan perintah berikut untuk membuat table di database
+8. jalankan perintah berikut untuk menjalankan project
+```js
+$npm run serve
+```
+9. jalankan perintah berikut untuk membuat table di database
 ```js
 $ npx prisma migrate dev
 ```
-9. gunakan test.rest untuk mencoba mengakses end point. Bisa juga menggunakan postman dan yang lainnya
-10. masukkan semua file unit test ke dalam folder test
+10. gunakan test.rest untuk mencoba mengakses end point. Bisa juga menggunakan postman dan yang lainnya
+11. masukkan semua file unit test ke dalam folder test
 
 ## NOTE
-1. command lainnya tentang prisma dapat dilihat di : 
-2. method lainnya yang ada pada validator dapat dilihat di : 
-3. methid lainnya yang ada pada jwt dapat dilihat di : 
-4. method lainnya yang ada pada bcrypt dapat dilihat di : 
-5. method lainnya yang ada pada parse-cookie dapat dilihat di : 
-6. method lainnya yang ada pada jest : 
+1. command lainnya tentang prisma dapat dilihat di : https://www.prisma.io/docs/concepts
+2. method lainnya yang ada pada validator dapat dilihat di : https://github.com/validatorjs/validator.js
+3. methid lainnya yang ada pada jwt dapat dilihat di : https://github.com/auth0/node-jsonwebtoken
+4. method lainnya yang ada pada bcrypt dapat dilihat di : https://github.com/kelektiv/node.bcrypt.js#readme
+5. method lainnya yang ada pada parse-cookie dapat dilihat di : https://github.com/expressjs/cookie-parser#readme
+6. method lainnya yang ada pada jest : https://jestjs.io/
