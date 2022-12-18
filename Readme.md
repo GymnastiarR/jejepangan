@@ -1,4 +1,4 @@
-Tentang project ini
+## About this project
 
 Project ini dibuat sebagai backend untuk apliksi jejepangan.
 
